@@ -1,0 +1,102 @@
+#include <Wire.h>
+#include <MPU6050.h>
+#include <LiquidCrystal.h>
+#include <SoftwareSerial.h>
+
+// ---------- MPU6050 ----------
+MPU6050 MPU;
+int GyroX, GyroY, GyroZ;
+
+// ---------- BUZZER ----------
+int buzzer = 3;
+
+// ---------- LCD ----------
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+
+// ---------- SIM800L ----------
+SoftwareSerial sim800(2, 6); // RX, TX
+
+bool smsGitti = false;
+
+// ---------- RÖLE ----------
+int rolePin = 13;
+
+// ---------- SMS GÖNDERME ----------
+void smsGonder() {
+  sim800.println("AT+CMGF=1");
+  delay(500);
+
+  sim800.println("AT+CMGS=\"+905511466841\"");
+  delay(500);
+
+  sim800.print("Sarsinti algilandi");
+  delay(300);
+
+  sim800.write(26); // CTRL+Z
+  delay(5000);
+}
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin();
+  MPU.initialize();
+
+  sim800.begin(9600);
+  delay(3000);
+
+  lcd.begin(16, 2);
+  lcd.clear();
+  lcd.print("EYLEM-MELEK");
+
+  pinMode(buzzer, OUTPUT);
+  pinMode(rolePin, OUTPUT);
+
+  digitalWrite(rolePin, LOW); // Röle kapalı
+}
+
+void loop() {
+
+  // ---------- MPU OKUMA ----------
+  MPU.getRotation(&GyroX, &GyroY, &GyroZ);
+
+  int maxGyro = max(
+    max(abs(GyroX), abs(GyroY)),
+    abs(GyroZ)
+  );
+
+  // ---------- 800 VE ÜZERİ ----------
+  if (maxGyro >= 800) {
+    tone(buzzer, 1000);            // Buzzer açık
+    digitalWrite(rolePin, HIGH);   // Röle aktif
+
+    if (!smsGitti) {
+      smsGonder();                // SMS gönder
+      smsGitti = true;
+    }
+  }
+
+  // ---------- 400 - 799 ----------
+  else if (maxGyro >= 400) {
+    tone(buzzer, 1000);            // SADECE buzzer
+    digitalWrite(rolePin, LOW);    // Röle kapalı
+    smsGitti = false;
+  }
+
+  // ---------- 400 ALTINDA ----------
+  else {
+    noTone(buzzer);
+    digitalWrite(rolePin, LOW);
+    smsGitti = false;
+  }
+
+  // ---------- LCD ----------
+  lcd.setCursor(0, 1);
+  lcd.print("X=");
+  lcd.print(GyroX);
+  lcd.print(" Y=");
+  lcd.print(GyroY);
+  lcd.print(" Z=");
+  lcd.print(GyroZ);
+
+  delay(500);
+}
