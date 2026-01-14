@@ -1,6 +1,8 @@
 MPU6050 TABANLI SARSINTI ALGILAMA ve SMS UYARI SİSTEMİ
 -
-
+Bu proje, yapilarda olusan titresimleri anlik olarak algilayan ve deprem aninda erken uyari veren
+akilli bir sensor sistemidir. Kritik esikler asildiginda sesli uyari verir, SMS ile bildirim gonderir
+ve gerekirse elektrik, su ve dogal gaz hatlarini otomatik olarak keserek riskleri onler.
 
 PROJENİN AMACI
 -
@@ -9,7 +11,7 @@ PROJENİN AMACI
 - Riskli durumlarda buzzer ve LED ile yerel uyari vermek  
 - Kritik esiklerde SMS veya arama ile uzaktan bildirim yapmak  
 - Role kontroluyle elektrik, su ve dogal gaz hatlarini otomatik kesmek  
-- Dusuk maliyetli, sahada uygulanabilir bir sistem gelistirmek  
+- Sahada uygulanabilir bir sistem gelistirmek  
 
 SİSTEM BİLEŞENLERİ
 -
@@ -24,9 +26,9 @@ SİSTEM BİLEŞENLERİ
 
 ÇALIŞMA MANTIĞI
 -
-1. MPU6050 sensorunden ivme verileri surekli okunur.  
+1. MPU6050 sensorunden ivme verilerinin surekli okunmasıyla; 
 2. Veriler belirlenen 1. esik ile karsilastirilir.  
-   - Asilirsa: Buzzer ve LED aktif olur.  
+   - Asarsa: Buzzer ve LED aktif olur.  
 3. Veriler 2. esik degerini asarsa:  
    - Buzzer ve LED aktif olur  
    - SIM800L ile SMS veya arama gonderilir  
@@ -39,6 +41,6 @@ PROJE RAPORU
 (report/DEPREM_ALGILAMA_SENSORU.docx)
 
 
-Bu proje; konutlar, apartmanlar, kucuk isletmeler ve deprem riski yuksek bolgelerde
+Bu proje; konutlar, apartmanlar ve deprem riski yuksek bolgelerde
 yapi guvenligini artirmaya yonelik, gelistirilebilir ve yayginlastirilabilir bir
 erken uyari cozumu sunmaktadir.
