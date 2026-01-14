@@ -38,7 +38,7 @@ Bu yapi sayesinde hem yerel hem de uzaktan erken uyari saglanir ve ikincil afet 
 
 PROJE RAPORU
 -
-(report/DEPREM_ALGILAMA_SENSORU.docx)
+(DEPREM ALGILAMA SENSÖRÜ-12.01.2026 - Kopya (1).docx)
 
 
 Bu proje; konutlar, apartmanlar ve deprem riski yuksek bolgelerde
