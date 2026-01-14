@@ -1,8 +1,6 @@
 MPU6050 TABANLI SARSINTI ALGILAMA ve SMS UYARI SİSTEMİ
 -
-Bu projde, yapıların sismik hareketlere verdiği tepkileri gerçek zamanlı olarak izleyebilen, erken uyarı üreten ve kritik durumlarda otomatik müdahale yapabilen düşük maliyetli bir deprem sensörü geliştirmek amaçlanmıştır.
 
-Sistem; mikro titresimleri algilayarak yapi davranisini izler, belirlenen esik degerleri asilidiginda kullaniciyi uyarir ve gerekirse elektrik , su ve dogal gaz hatlarini otomatik olarak keser.
 
 PROJENİN AMACI
 -
