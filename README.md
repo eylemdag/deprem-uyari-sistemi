@@ -1,7 +1,7 @@
 MPU6050 TABANLI SARSINTI ALGILAMA ve SMS UYARI SİSTEMİ
 -
 Bu proje, yapilarin sismik titresimlere verdigi tepkileri gercek zamanli olarak izleyebilen,
-erken uyari ureten ve kritik durumlarda otomatik mudahale yapabilen dusuk maliyetli bir
+erken uyari ureten ve kritik durumlarda otomatik müdahale yapabilen dusuk maliyetli bir
 deprem sensoru sistemi gelistirmeyi amaclamaktadir.
 
 Sistem; mikro titresimleri algilayarak yapi davranisini izler, belirlenen esik degerleri
